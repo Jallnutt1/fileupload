@@ -30,7 +30,7 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 
-https://youtu.be/GeiUTkSAJPs?si=F5JPGzrzV7FsQJA9&t=593
+# https://youtu.be/GeiUTkSAJPs?si=F5JPGzrzV7FsQJA9&t=593
 
 
 
