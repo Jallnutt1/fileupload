@@ -5,24 +5,23 @@ from werkzeug.utils import secure_filename
 import os 
 from wtforms.validators import InputRequired
 
-app = Flask(__name__)
+
+app = Flask(__name__, instance_relative_config=True)
+
 app.config['SECRET_KEY'] = 'supersecretkey'
 app.config['UPLOAD_FOLDER'] = 'static/files'
-
 
 class UploadFileForm(FlaskForm):
     file = FileField("File", validators=[InputRequired()])
     submit = SubmitField("Upload File")
 
-@app.route('/', methods=['GET', 'POST'])
 @app.route('/home', methods=['GET', 'POST'])
-
+@app.route('/', methods=['GET', 'POST'])
 def home():
     form = UploadFileForm()
     if form.validate_on_submit():
         file = form.file.data
-        file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)),
-                               app.config['UPLOAD_FOLDER'],secure_filename(file.filename)))
+        file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)),app.config['UPLOAD_FOLDER'],secure_filename(file.filename)))
         return "File has been uploaded."
     return render_template('index.html', form=form)
 
@@ -30,6 +29,11 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 
+
+
+
+
+# gunicorn fir:app
 # https://youtu.be/GeiUTkSAJPs?si=F5JPGzrzV7FsQJA9&t=593
 
 
