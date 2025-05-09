@@ -33,7 +33,8 @@ def home():
 
 @app.route('/delete/<fileD>', methods=['GET', 'POST'])
 def delete(fileD):
-    print(fileD)
+    os.remove('/Users/analyst/Documents/development/fileUpload/static/files/' + fileD)
+    # print('/Users/analyst/Documents/development/fileUpload/static/files' + fileD)
     return redirect('/')
     
 
