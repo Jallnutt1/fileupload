@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 from flask_wtf import FlaskForm
 from wtforms import FileField, SubmitField
 from werkzeug.utils import secure_filename
@@ -24,11 +24,19 @@ def home():
     uploaded = os.listdir(app.config['UPLOAD_FOLDER'])
     if form.validate_on_submit():
         file = form.file.data
+        # print(file)
         file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)),app.config['UPLOAD_FOLDER'],secure_filename(file.filename)))
         uploaded = os.listdir(app.config['UPLOAD_FOLDER'])
 
         return render_template('index.html', form=form, files=uploaded)
     return render_template('index.html', form=form, files=uploaded)
+
+@app.route('/delete/<fileD>', methods=['GET', 'POST'])
+def delete(fileD):
+    print(fileD)
+    return redirect('/')
+    
+
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -19,7 +19,7 @@
             {{form.submit()}}
         
         {% for file in files %}
-        <li> {{ file }}</li>
+        <li> {{ file }} <a class="delete-btn" href="/delete/{{ file }}">delete</a> </li>
         {% endfor %}
     </body>
 </html>
