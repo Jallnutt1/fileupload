@@ -38,9 +38,9 @@ def delete(fileD):
     return redirect('/')
 
 # @app.route('/download/<fileDown>', methods=['GET', 'POST'])
-# @app.route('/download/<fileDown>')
-# def download(fileDown):
-    # return send_file('/Users/analyst/Documents/development/fileupload/static/files/' + fileDown)
+@app.route('/download/<fileDown>')
+def download(fileDown):
+    return send_file('/Users/analyst/Documents/development/fileupload/static/files/' + fileDown, as_attachment=True)
 
 
 if __name__ == '__main__':

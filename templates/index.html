@@ -12,14 +12,16 @@
     </head>
     <body>
         <h1>Flask File Upload Tutorial</h1>
-
+        
+        <div>
         <form method='POST' enctype='multipart/form-data'>
             {{form.hidden_tag()}}
             {{form.file()}}
             {{form.submit()}}
+        </div>
         
         {% for file in files %}
-        <li> {{ file }} <a class="delete-btn" href="/delete/{{ file }}">delete</a> </li>
+        <li> <a href="/download/{{ file }}">{{ file }}</a> <a class="delete-btn" href="/delete/{{ file }}">delete</a> </li>
         {% endfor %}
     </body>
 </html>
