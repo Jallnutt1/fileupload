@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, send_file
 from flask_wtf import FlaskForm
 from wtforms import FileField, SubmitField
 from werkzeug.utils import secure_filename
@@ -36,7 +36,11 @@ def delete(fileD):
     os.remove('/Users/analyst/Documents/development/fileUpload/static/files/' + fileD)
     # print('/Users/analyst/Documents/development/fileUpload/static/files' + fileD)
     return redirect('/')
-    
+
+# @app.route('/download/<fileDown>', methods=['GET', 'POST'])
+# @app.route('/download/<fileDown>')
+# def download(fileDown):
+    # return send_file('/Users/analyst/Documents/development/fileupload/static/files/' + fileDown)
 
 
 if __name__ == '__main__':
